@@ -1,14 +1,14 @@
 # learngit
 
--git config --global user.name "Ashish"
+git config --global user.name "Ashish"
 	To configure the username globally
--git config --global color.ui true
+git config --global color.ui true
 	To active the cli color scheme
--git init
+git init
 	This is to initiate/create a local git repository.
--git help
+git help
 	This tells us about all the commands in git
--git help <name>
+- git help <name>
 	This will tell us about the "name" command in detail.
 -git status
 	Tells us about the current status of your working directory
