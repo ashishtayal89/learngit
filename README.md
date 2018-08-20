@@ -8,13 +8,13 @@ git init
 	This is to initiate/create a local git repository.
 git help
 	This tells us about all the commands in git
-- git help <name>
+git help <name>
 	This will tell us about the "name" command in detail.
--git status
+git status
 	Tells us about the current status of your working directory
--git add <filename> 
+git add <filename> 
 	This will add the individual file with the given "filename" to stage.
--git add --all,
+git add --all,
 	This will add all the files to stage.
 git add *.txt
 	This will add all the files with .txt extension in the current directory to stage.
