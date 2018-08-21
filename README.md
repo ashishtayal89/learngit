@@ -5,8 +5,10 @@
 ### config
 
 - ```git config --global user.name "Ashish"```
+
 	To configure the username globally
 - ```git config --global color.ui true```
+
 	To active the cli color scheme
 git init
 	This is to initiate/create a local git repository.
