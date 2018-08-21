@@ -30,8 +30,8 @@
 - ```git status```
 
 ### add
-
-	Tells us about the current status of your working directory
+Tells us about the current status of your working directory
+	
 - ```git add <filename>```
 
 	This will add the individual file with the given "filename" to stage.
@@ -50,8 +50,8 @@
 - ```git add doc/```
 
 ### commit
+This will take a screenshot of all the staged/added changes.
 
-	This will add all the files inside the doc directory to stage.
 - ```git commit -m "Create a Readme"```
 
 	This will commit the staged files with the comment "Create a Readme".
