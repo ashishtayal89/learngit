@@ -25,7 +25,11 @@
 
 	This will tell us about the "name" command in detail.
 
+### status
+
 - ```git status```
+
+### add
 
 	Tells us about the current status of your working directory
 - ```git add <filename>```
@@ -45,6 +49,8 @@
 	This will add all the files inside the doc directory with the extension .txt to stage.
 - ```git add doc/```
 
+### commit
+
 	This will add all the files inside the doc directory to stage.
 - ```git commit -m "Create a Readme"```
 
@@ -56,12 +62,18 @@
 
 	It amends or updates the last commit and changes the previous commit message with the new message specified.
 	Should not do this after we have pushed a commit.
+
+### diff
+
 - ```git diff <filepath>```
 	
 	This will show the difference in the file at the given filepath in the current working directory from the last commit.
 - ```git diff <filepath> --staged```
 	
 	This will show the difference in the file at the given filepath in the staging area from the last commit.
+
+### reset
+
 - ```git reset HEAD <Filename>```
 	
 	This will un-stage the file with the given Filename.
@@ -74,12 +86,21 @@
 - ```git reset --hard HEAD^^```
 	
 	Undo last 2 commits and all the changes are discarded. Should not do this after we have pushed a commit.
+
+### checkout
+
 - ```git checkout -- <Filename>```
 	
 	This will rollback the file to the last commit
+
+### log
+
 - ```git log```
 	
 	This will list all the commits on the branch along with the author name and date.
+
+### remote
+
 - ```git remote add origin <Remote repository http url>```
 	
 	This will add a new repository with the name origin and the given git url 
@@ -91,24 +112,46 @@
 	Removes the remote repository
 - ```git remote show origin```
 - ```git remote prune origin```
+
+### push
+
 - ```git push -u origin master```
+
 	Pushes the master branch to the remote repository which in this case is origin. Using -u we don't need to provide the repo namewhich is origin in this case and the branch name which is master in this case again and again. So next time we just do 
 
 - ```git push```
 - ```git push origin :<branch name> (To delete remote branch)```
 - ```git push origin <local branch name>:<remote branch name>```
+
+### pull
+
 - ```git pull```
+
+	git fetch + git merge origin/master (If you are on the master branch)
 - ```git pull origin <branch name>```
+
+### clone
+
 - ```git clone <Remote repository http url> <folder name>```
+
+### branch
+
 - ```git branch <branch name>```
 - ```git branch -d <branch name>```
 - ```git branch```
 - ```git branch -r```
+
+### checkout
+
 - ```git checkout <branch name>```
 - ```git checkout -b <branch name>```
-- ```git merger <branch name>```
-- ```git pull```
-	git fetch + git merge origin/master (If you are on the master branch)
+
+### merge
+
+- ```git merge <branch name>```
+
+### stash
+
 - ```git stash```
 	
 	To push/save all the uncommitted and tracked files onto a stack so that they can be reapplied later.
