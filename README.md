@@ -1,6 +1,6 @@
-# learngit
+# Learn GIT
 
-## CheatSheet
+## Cheat-Sheet
 
 ### config
 
