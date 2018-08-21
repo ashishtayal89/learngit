@@ -1,6 +1,7 @@
 # Learn GIT
 This document contains some basics of git along with a cheat sheet for git CLI commands.
 
+## Basics
 
 ## Cheat-Sheet
 
