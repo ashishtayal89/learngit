@@ -4,7 +4,7 @@
 
 ### config
 
-- ```git config --global user.name "Ashish"```
+- ```**git config --global user.name "Ashish"**```
 
 	To configure the username globally
 - ```git config --global color.ui true```
