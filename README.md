@@ -23,7 +23,7 @@ This document contains some basics of git along with a cheat sheet for git CLI c
 
 - ```git help```
 
-	This tells us about all the commands in git
+	List's all the commands in git
 - ```git help <name>```
 
 	This will tell us about the "name" command in detail.
