@@ -3,6 +3,17 @@ This document contains some basics of git along with a cheat sheet for git CLI c
 
 ## Basics
 
+### introduction
+
+- Why do we need a version control system :
+	1. Merging
+	2. Time Capsule OR Maintains a list of different changes/commits at diffreent time in history.
+
+- **CVCS** | **DVCS** 
+--- | --- 
+They have a centralised repository.(Only remote) | The have distributed repository(Remote and local) 
+Eg : SVN | Eg : Git
+
 ## Cheat-Sheet
 
 ### config
