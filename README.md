@@ -5,6 +5,10 @@ This document contains some basics of git along with a cheat sheet for git CLI c
 
 ### introduction
 
+- Created by : **Linus Torvalds** 
+
+- Official site : http://git-scm.com
+
 - Why do we need a version control system :
 	1. Merging
 	2. Time Capsule OR Maintains a list of different changes/commits at diffreent time in history.
@@ -17,9 +21,20 @@ Very difficult to work offline | Very easy to work offline
 Less secure since the code is only at 1 server | More secure since every individual has a complete copy of the code.
 Eg : SVN | Eg : Git
 
+- Flow 
+	1. Create a local repo by git init
+	2. Create a new file Readme.md
+	3. Add this file to the staging area using ```git add```.
+	4. Take a snapshot of the staged changes using ```git commit```.
+
+
 ## Cheat-Sheet
 
 ### config
+
+- ```git config --global user.email "Ashish@gmail.com"```
+
+	To configure the email  globally
 
 - ```git config --global user.name "Ashish"```
 
@@ -31,16 +46,17 @@ Eg : SVN | Eg : Git
 
 - ```git init```
 
-	This is to initiate/create a local git repository.
+	This is to initiate/create a local git repository. 
+	It is created inside the local git directory which is at Users/<name>/store/.git
 	
 ### help 
 
 - ```git help```
 
 	List's all the commands in git
-- ```git help <name>```
+- ```git help <command name>```
 
-	This will tell us about the "name" command in detail.
+	This will tell us about the  command in detail.
 
 ### status
 
