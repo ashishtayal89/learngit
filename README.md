@@ -24,8 +24,10 @@ Eg : SVN | Eg : Git
 - Flow 
 	1. Create a local repo by git init
 	2. Create a new file Readme.md
-	3. Add this file to the staging area using ```git add```.
+	3. Add this file to the staging area using ```git add```. Getting ready to take a snapshot. 
 	4. Take a snapshot of the staged changes using ```git commit```.
+
+- Try to keep the commit messages in the present tense. It should explain what the commit does.
 
 
 ## Cheat-Sheet
