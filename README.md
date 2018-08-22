@@ -12,6 +12,9 @@ This document contains some basics of git along with a cheat sheet for git CLI c
 **CVCS** | **DVCS** 
 --- | --- 
 They have a centralised repository.(Only remote) | The have distributed repository(Remote and local) 
+Not easy to make frequent commits | Its easy to make commits since you work on your local repo
+Very difficult to work offline | Very easy to work offline
+Less secure since the code is only at 1 server | More secure since every individual has a complete copy of the code.
 Eg : SVN | Eg : Git
 
 ## Cheat-Sheet
