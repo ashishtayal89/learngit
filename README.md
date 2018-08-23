@@ -40,8 +40,8 @@ Eg : SVN | Eg : Git
 	2. ```git commit --amend -m "Created a README and added new App file"```
 
 - Git doen't take care of the access control. We need some softwares to do that :
-	1. Hosted solutions : Github or Bitbucket
-	2. Self Managed : Gitosis or Gitorious
+	1. **Hosted solutions** : Github or Bitbucket
+	2. **Self Managed** : Gitosis or Gitorious
 
 - How to push the local code the remote repo ?
 	1. Create a remote repo in git. This will produce a repo url like https://github.com/ashishtayal14/learngit.git
@@ -52,7 +52,7 @@ Eg : SVN | Eg : Git
 	5. If your remote repo is in github it will ask for the github username and password. Provide that.
 	6. If you don't want to specify the username and password everytime you push please refer the [this](http://help.github.com/articles/set-up-git) link which talks about password caching. 
 
-- How to pull the remote cod to local repo ?
+- How to pull the remote code to local repo ?
 	1. Simply run ```git pull```.
 
 - Heroku(Hosting platform)
@@ -66,6 +66,7 @@ Eg : SVN | Eg : Git
 <img width="675" alt="screen shot 2018-08-24 at 12 58 51 am" src="https://user-images.githubusercontent.com/12914629/44547505-f11cbe00-a738-11e8-8ece-6af605472262.png">
 
 ### Cloning and Branching 
+
 
 
 ## Cheat-Sheet
