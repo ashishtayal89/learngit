@@ -3,7 +3,7 @@ This document contains some basics of git along with a cheat sheet for git CLI c
 
 ## Basics
 
-### introduction
+### Introduction
 
 - Created by : **Linus Torvalds** 
 
@@ -12,6 +12,8 @@ This document contains some basics of git along with a cheat sheet for git CLI c
 - Why do we need a version control system :
 	1. Merging
 	2. Time Capsule OR Maintains a list of different changes/commits at diffreent time in history.
+	
+<img width="1368" alt="screen shot 2018-08-22 at 10 57 50 pm" src="https://user-images.githubusercontent.com/12914629/44542058-6d0f0a00-a729-11e8-9916-6602542c53b2.png">
 
 **CVCS** | **DVCS** 
 --- | --- 
@@ -29,6 +31,9 @@ Eg : SVN | Eg : Git
 
 - Try to keep the commit messages in the present tense. It should explain what the commit does.
 
+### Staging and Remotes
+
+-	
 
 ## Cheat-Sheet
 
@@ -64,6 +69,10 @@ Eg : SVN | Eg : Git
 
 - ```git status```
 
+	This tells about the current state/status or state of your working directory. Majorly
+	1. Tracked Files (Staged and Unstaged both).
+	2. Untracted Files.
+
 ### add
 Tells us about the current status of your working directory
 	
@@ -83,6 +92,8 @@ Tells us about the current status of your working directory
 
 	This will add all the files inside the doc directory with the extension .txt to stage.
 - ```git add doc/```
+
+	This will add all the files inside the doc directory	
 
 ### commit
 This will take a screenshot of all the staged/added changes.
