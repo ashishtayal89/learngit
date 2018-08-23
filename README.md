@@ -12,7 +12,7 @@ This document contains some basics of git along with a cheat sheet for git CLI c
 - Why do we need a version control system :
 	1. Merging
 	2. Time Capsule OR Maintains a list of different changes/commits at diffreent time in history.
-	
+
 <img width="1368" alt="screen shot 2018-08-22 at 10 57 50 pm" src="https://user-images.githubusercontent.com/12914629/44542058-6d0f0a00-a729-11e8-9916-6602542c53b2.png">
 
 **CVCS** | **DVCS** 
@@ -33,7 +33,24 @@ Eg : SVN | Eg : Git
 
 ### Staging and Remotes
 
--	
+-	Use **reset** command to unstage the files or undo the commits.
+-	**HEAD** points/refers to the last commit on the current branch/timeline. 
+-	To update the last commit you can do either of the following :
+	1. ```git reset --soft HEAD^```, update the file and commit the updates.
+	2. ```git commit --amend -m "Created a README and added new App file"```
+
+- Git doen't take care of the access control. We need some softwares to do that :
+	1. Hosted solutions : Github or Bitbucket
+	2. Self Managed : Gitosis or Gitorious
+
+- How to push the local code the remote repo :
+	1. Create a remote repo in git. This will produce a repo url like https://github.com/ashishtayal14/learngit.git
+	2. The you need to map this remote url to a local namespace using the command ```git remote add origin https://github.com/ashishtayal14/learngit.git```. Here **origin** is the namespace/alias which we are giving to the remote repo. We can give any name we want(generaly "origin"). Sometimes your could have mutiple remote repositories(different for dev and prod) for the same codebase. In that case you can add multiple remote to the local repository. This means that the remote and local repository has a **many to many relationship** ie a remote repo can be associated with multiple local repo and local repo can be associted with multiple remote repo.
+	3. To list all the remote repo saved in your local use the below command. These remotes are like **bookmarks**.
+		```git remote -v```
+	4. Now to push the local repo to remote use the command ```git push -u origin master```. Here **origin** refers to the remote repo where we want to push the code and **master** refers to the branch of the local repo we want to push.
+	5. If your remote repo is in github it will ask for the github username and password. Provide that.
+	6. If you don't want to specify the username and password everytime you push please refer the [this](http://help.github.com/articles/set-up-git) link which talks about password caching. 
 
 ## Cheat-Sheet
 
@@ -69,7 +86,7 @@ Eg : SVN | Eg : Git
 
 - ```git status```
 
-	This tells about the current state/status or state of your working directory. Majorly
+	This tells about the current state/status of your working directory. Majorly
 	1. Tracked Files (Staged and Unstaged both).
 	2. Untracted Files.
 
@@ -111,6 +128,12 @@ This will take a screenshot of all the staged/added changes.
 
 ### diff
 
+- ```git diff```
+	
+	Show all unstaged differences.
+- ```git diff --staged```
+	
+	Show all staged differneces.
 - ```git diff <filepath>```
 	
 	This will show the difference in the file at the given filepath in the current working directory from the last commit.
@@ -137,7 +160,7 @@ This will take a screenshot of all the staged/added changes.
 
 - ```git checkout -- <Filename>```
 	
-	This will rollback the file to the last commit
+	This will rollback the file to the last commit state. 
 
 ### log
 
