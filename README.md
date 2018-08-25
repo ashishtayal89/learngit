@@ -111,7 +111,7 @@ When we 1 or multiple commits on 1 branch and nothing on the other branch, it be
 	3. This will open the VI and show the commit message.Type :wq to save and quit.
 	<img width="704" alt="screen shot 2018-08-26 at 1 07 28 am" src="https://user-images.githubusercontent.com/12914629/44621921-8c926800-a8cc-11e8-9f25-14b0aab524db.png">
 	<img width="693" alt="screen shot 2018-08-26 at 1 09 09 am" src="https://user-images.githubusercontent.com/12914629/44621930-adf35400-a8cc-11e8-8903-68f207ee8db4.png">
-	
+
 	4. Till now the remote master branch doesn't know about the merge. So do ```git push``` to push your local changes to the remote branch.
 
 - What happens when there is a confict in pull?
@@ -119,9 +119,10 @@ When we 1 or multiple commits on 1 branch and nothing on the other branch, it be
 	2. Issues comes with the merge process. It asks us to make the changes in the conflicted files and then commit. So do ```git status``` to list the files who both have udated and which have a conflict and resolve them.
 	3. Then run ```git commit -a```. Note here I have not given any commit message so the default commit message will be shown along with the conflicted files which have been fixed.
 
+<img width="701" alt="screen shot 2018-08-26 at 1 30 41 am" src="https://user-images.githubusercontent.com/12914629/44622136-81d9d200-a8d0-11e8-8ac3-568f3653e0ac.png">
 <img width="700" alt="screen shot 2018-08-26 at 1 31 22 am" src="https://user-images.githubusercontent.com/12914629/44622104-e7798e80-a8cf-11e8-816c-e79a91c01412.png">
 <img width="670" alt="screen shot 2018-08-26 at 1 32 12 am" src="https://user-images.githubusercontent.com/12914629/44622111-e9435200-a8cf-11e8-9552-e7b56fedcef4.png">
-<img width="670" alt="screen shot 2018-08-26 at 1 32 12 am" src="https://user-images.githubusercontent.com/12914629/44622113-eb0d1580-a8cf-11e8-8e6d-77e0110f21f2.png">
+
 
 ## Cheat-Sheet
 
