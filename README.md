@@ -95,7 +95,7 @@ When we 1 or multiple commits on 1 branch and nothing on the other branch, it be
 - What happens when you try to merge 2 branches with 1 or more commits each?(Refer to image below).
 	1. Running ```git merge admin``` will open a VI. VI is a screen-oriented text editor originally created for the Unix operating system. The name "vi" is derived from the shortest unambiguous abbreviation for the ex command visual. If you haven’t defined a core.editor for Git to use, it defaults to using vi for commit messages.
 	2. Please enter the vi command and press enter to exit. Refer to the image below for different vi commands. If you simply want to save and exit type __:wq__ and hit enter. Here w => write and q=> quit.
-	3. This kind of merge is known as **recursive merge**. In this kind of merge, git creates a commit at the time of merge. 
+	3. This kind of merge is known as **recursive merge**. In this kind of merge, git creates a commit at the time of merge. This commit has no modified files but just signifies the merge of 2 branches. This is in addition to the commits in both the branches.
 
  
 <img width="704" alt="screen shot 2018-08-25 at 11 46 45 pm" src="https://user-images.githubusercontent.com/12914629/44621288-34099d80-a8c1-11e8-8fa9-23432e0cda40.png">
