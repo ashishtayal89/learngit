@@ -103,6 +103,16 @@ When we 1 or multiple commits on 1 branch and nothing on the other branch, it be
 <img width="702" alt="screen shot 2018-08-26 at 12 23 02 am" src="https://user-images.githubusercontent.com/12914629/44621587-42a68380-a8c6-11e8-80b2-a1d8e33d6cfb.png">
 
 
+### Collaboration
+
+- What happens behind the sceens in pull?
+	1. It fetches/sync our local repository with the remote repository. Same as ```git fetch```. It creates a branch names **origin/master** in our local repo. This is the same as the master remote branch.
+	2. Then it merge the origin/master with master banch. Same as ```git merge origin\master```.
+	3. This will open the VI and show the commit message.Type :wq to save and quit.
+	<img width="704" alt="screen shot 2018-08-26 at 1 07 28 am" src="https://user-images.githubusercontent.com/12914629/44621921-8c926800-a8cc-11e8-9f25-14b0aab524db.png">
+	<img width="693" alt="screen shot 2018-08-26 at 1 09 09 am" src="https://user-images.githubusercontent.com/12914629/44621930-adf35400-a8cc-11e8-8903-68f207ee8db4.png">
+	4. Till now the remote master branch doesn't know about the merge. So do ```git push``` to push your local changes to the remote branch.
+
 ## Cheat-Sheet
 
 ### config
