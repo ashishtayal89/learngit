@@ -24,7 +24,7 @@ Less secure since the code is only at 1 server | More secure since every individ
 Eg : SVN | Eg : Git
 
 - Flow 
-	1. Create a local repo by git init
+	1. Create a local repo by git init(https://git-scm.com/docs/git-init).
 	2. Create a new file Readme.md
 	3. Add this file to the staging area using ```git add```. Getting ready to take a snapshot. 
 	4. Take a snapshot of the staged changes using ```git commit```.
@@ -43,7 +43,7 @@ Eg : SVN | Eg : Git
 	1. **Hosted solutions** : Github or Bitbucket
 	2. **Self Managed** : Gitosis or Gitorious
 
-- How to push the local code the remote repo ?
+- How to push the local code to the remote repo ?
 	1. Create a remote repo in git. This will produce a repo url like https://github.com/ashishtayal14/learngit.git
 	2. The you need to map this remote url to a local namespace using the command ```git remote add origin https://github.com/ashishtayal14/learngit.git```. Here **origin** is the namespace/alias which we are giving to the remote repo. We can give any name we want(generaly "origin"). Sometimes your could have mutiple remote repositories(different for dev and prod) for the same codebase. In that case you can add multiple remote to the local repository. This means that the remote and local repository has a **many to many relationship** ie a remote repo can be associated with multiple local repo and local repo can be associted with multiple remote repo.
 	3. To list all the remote repo saved in your local use the below command. These remotes are like **bookmarks**.
@@ -59,7 +59,7 @@ Eg : SVN | Eg : Git
 	1. Create a heroku account and install "heroku gem".
 	2. Run ```heroku create```. This command does a few things :
 		1. Creates a remote repo and provides a SSH address for it.
-		2. Addes the remote repo to the list of repo in the local with the alias heroku.
+		2. Adds the remote repo to the list of repo in the local with the alias heroku.
 	3. Run ```git remote -v``` to see the added remote heroku repo
 	4. Run ```git push heroku master``` to push the local branch to heroku, which will deploy this branch.
 
@@ -67,7 +67,39 @@ Eg : SVN | Eg : Git
 
 ### Cloning and Branching 
 
+- How to create a local repo from a remote repo?
+	1. Just do a ```git clone https://github.com/ashishtayal14/learngit.git learngit```.
+		1. Here we first specify the repo name followed by the local directory name where we want to clone the repo.
+		2. This does 3 basic things for us. Namely :
+			1. Clones the remote repo
+			2. Add the remote repo url to the list of remote url with namespace origin. Check by using ``` git remote -v```
+			3. Checks out the initial branch(likely master). Sets the HEAD to the last commit of that branch.
+ 
+- How do I create my own branch ?
+	1. First do a ```git branch <branch name>```. This will create a new branch in the repo with whatever name you give to the branch.
+	2. Now just run ```git checkout <branch name>```. This will position the HEAD to the "branch name" given by you. This is like changing timeline.
+	3. OR you could club the first 2 steps and just do ```git checkout -b <branch name>. This will first create a branch and then position the HEAD to the current branch.
 
+- How to merge 2 branches (Merge cat branch into master branch)?
+	1. Move to the master branch using ```git checkout master```.
+	2. Do ```git merge cat```. Please have a look at the image below for better understanding.
+	3. Now we can just go and delete the cat branch using ```git branch -d cat```.
+<img width="623" alt="screen shot 2018-08-25 at 11 35 55 pm" src="https://user-images.githubusercontent.com/12914629/44621218-b1cca980-a8bf-11e8-93b6-1d42792f08a9.png">
+<img width="606" alt="screen shot 2018-08-26 at 12 02 57 am" src="https://user-images.githubusercontent.com/12914629/44621399-6ae0b300-a8c3-11e8-8240-5ca1b5c9101c.png">
+
+- What is fast-forwanding?
+When we 1 or multiple commits on 1 branch and nothing on the other branch, it becomes very easy for the git to merge these branches and therefore it fastforwards the merging process.
+
+- Everytime we do a commit our HEAD moves with it and always remains on the last commit until moved manualy.
+
+- What happens when you try to merge 2 branches with 1 or more commits each?(Refer to image below).
+	1. Running ```git merge admin``` will open a VI. VI is a screen-oriented text editor originally created for the Unix operating system. The name "vi" is derived from the shortest unambiguous abbreviation for the ex command visual. If you haven’t defined a core.editor for Git to use, it defaults to using vi for commit messages.
+	2. Please enter the vi command and press enter to exit. Refer to the image below for different vi commands. If you simply want to save and exit type __:wq__ and hit enter. Here w => write and q=> quit.
+	3. This kind of merge is known as **recursive merge**. In this kind of merge, git creates a commit at the time of merge. 
+
+ 
+<img width="704" alt="screen shot 2018-08-25 at 11 46 45 pm" src="https://user-images.githubusercontent.com/12914629/44621288-34099d80-a8c1-11e8-8fa9-23432e0cda40.png">
+<img width="491" alt="screen shot 2018-08-25 at 11 56 04 pm" src="https://user-images.githubusercontent.com/12914629/44621351-77184080-a8c2-11e8-93f6-a5b0d386020a.png">
 
 ## Cheat-Sheet
 
@@ -224,6 +256,7 @@ This will take a screenshot of all the staged/added changes.
 
 - ```git branch <branch name>```
 - ```git branch -d <branch name>```
+	This deletes the branch with the given "branch name".
 - ```git branch```
 - ```git branch -r```
 
