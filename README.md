@@ -78,7 +78,7 @@ Eg : SVN | Eg : Git
 - How do I create my own branch ?
 	1. First do a ```git branch <branch name>```. This will create a new branch in the repo with whatever name you give to the branch.
 	2. Now just run ```git checkout <branch name>```. This will position the HEAD to the "branch name" given by you. This is like changing timeline.
-	3. OR you could club the first 2 steps and just do ```git checkout -b <branch name>. This will first create a branch and then position the HEAD to the current branch.
+	3. OR you could club the first 2 steps and just do ```git checkout -b <branch name>```. This will first create a branch and then position the HEAD to the current branch.
 
 - How to merge 2 branches (Merge cat branch into master branch)?
 	1. Move to the master branch using ```git checkout master```.
