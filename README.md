@@ -61,7 +61,7 @@ Eg : SVN | Eg : Git
 		1. Creates a remote repo and provides a SSH address for it.
 		2. Adds the remote repo to the list of repo in the local with the alias heroku.
 	3. Run ```git remote -v``` to see the added remote heroku repo
-	4. Run ```git push heroku master``` to push the local branch to heroku, which will deploy this branch.
+	4. Run ```git push heroku master``` to push the local branch to heroku, which will deploy this branch. Heroku only deploys the master branch
 
 <img width="675" alt="screen shot 2018-08-24 at 12 58 51 am" src="https://user-images.githubusercontent.com/12914629/44547505-f11cbe00-a738-11e8-8ece-6af605472262.png">
 
@@ -83,11 +83,12 @@ Eg : SVN | Eg : Git
 - How to merge 2 branches (Merge cat branch into master branch)?
 	1. Move to the master branch using ```git checkout master```.
 	2. Do ```git merge cat```. Please have a look at the image below for better understanding.
-	3. Now we can just go and delete the cat branch using ```git branch -d cat```. As you can see in the below image that after deleting the cat branch the commit of the cat branch is moved to the master branch and so there is not extra merge commit in this master branch.
+	3. Now we can just go and delete the cat branch using ```git branch -d cat```. As you can see in the below image that after deleting the cat branch the commit of the cat branch is moved to the master branch and so there is not extra merge commit in this master branch.This is a fast-forwarding commit.
 <img width="623" alt="screen shot 2018-08-25 at 11 35 55 pm" src="https://user-images.githubusercontent.com/12914629/44621218-b1cca980-a8bf-11e8-93b6-1d42792f08a9.png">
 <img width="606" alt="screen shot 2018-08-26 at 12 02 57 am" src="https://user-images.githubusercontent.com/12914629/44621399-6ae0b300-a8c3-11e8-8240-5ca1b5c9101c.png">
 
 - What is fast-forwanding?
+
 When we 1 or multiple commits on 1 branch and nothing on the other branch, it becomes very easy for the git to merge these branches and therefore it fastforwards the merging process.
 
 - Everytime we do a commit our HEAD moves with it and always remains on the last commit until moved manualy.
@@ -106,7 +107,7 @@ When we 1 or multiple commits on 1 branch and nothing on the other branch, it be
 ### Collaboration
 
 - What happens behind the sceens in pull?
-	1. It fetches/sync our local repository with the remote repository. Same as ```git fetch```. It creates a branch names **origin/master** in our local repo. This is the same as the master remote branch.
+	1. It fetches/sync our local repository with the remote repository. Same as ```git fetch```. It creates a branch named **origin/master** in our local repo. This is the same as the master remote branch.
 	2. Then it merge the origin/master with master banch. Same as ```git merge origin\master```.
 	3. This will open the VI and show the commit message.Type :wq to save and quit.
 	<img width="704" alt="screen shot 2018-08-26 at 1 07 28 am" src="https://user-images.githubusercontent.com/12914629/44621921-8c926800-a8cc-11e8-9f25-14b0aab524db.png">
@@ -123,6 +124,44 @@ When we 1 or multiple commits on 1 branch and nothing on the other branch, it be
 <img width="700" alt="screen shot 2018-08-26 at 1 31 22 am" src="https://user-images.githubusercontent.com/12914629/44622104-e7798e80-a8cf-11e8-816c-e79a91c01412.png">
 <img width="670" alt="screen shot 2018-08-26 at 1 32 12 am" src="https://user-images.githubusercontent.com/12914629/44622111-e9435200-a8cf-11e8-9552-e7b56fedcef4.png">
 
+
+### Branching
+
+- How to create a local branch and push it to remote ?
+	1. Create a new branch localy by ```git checkout -b <branchname>```.
+	2. ```git push origin <branchname>```. Once you push this branch to the remote, the git starts tracking this branch so that you don't need to provide the branchname again during push. So next time you could simply do ```git push```.
+
+- How to pull this new branch on local ?
+	1. When you do a git pull/fetch it will show you there is a new branch.
+	2. Although it will not be visible when you do a ```git branch``` since it is still not a tracked branch, but it will be shown in ```git branch -r```.
+	3. Now just do a ```git checkout <branchname>``` and it will set this branch as a tracking remote branch. Now you just need to do git push to push any local changes to the remote. 
+
+<img width="604" alt="screen shot 2018-08-29 at 11 16 09 pm" src="https://user-images.githubusercontent.com/12914629/44805377-a7711f00-abe1-11e8-9241-3e1716ab41a8.png">
+<img width="687" alt="screen shot 2018-08-29 at 11 15 28 pm" src="https://user-images.githubusercontent.com/12914629/44805380-a8a24c00-abe1-11e8-96d1-1eeabba6ce5a.png">
+
+- How to keep track of the remote?
+	1. ```git remote show origin``` : 
+		1. Shows all the remote branches and weather they are tracked with local or not.
+		2. Local branches configured for git pull.
+		3. Local branches configured for git push. It also shows if our local branch is out of date with the remote.
+
+<img width="592" alt="screen shot 2018-08-30 at 12 00 21 am" src="https://user-images.githubusercontent.com/12914629/44807683-ca063680-abe7-11e8-85aa-59df7f30ba71.png">
+
+- How to push a local branch which has been deleted from the remote?
+	1. First we try to run ```git push```. This does nothing since there is not remote branch to push to.
+	2. Then we run ```git remote show origin```. This will list all the remote braches. The deleted branch appears as a stale branch.
+	3. Then run ```git remote prune origin```. This will remove the stale ref of the remote branch from the local.
+	4. Then run ```git push origin <branchname>``` to push the branch to remote.
+<img width="704" alt="screen shot 2018-08-30 at 12 08 34 am" src="https://user-images.githubusercontent.com/12914629/44808067-e060c200-abe8-11e8-9f32-e81642097202.png">
+
+- What are tags?
+Tags are reference to a specific commit. This is generaly used for release versioning. 
+1. ```git tag``` lists all the tags in the repo.
+2. ```git checkout <tagname>``` will checkout the code for the commit which was tagged.
+3. ```git tag -a <tagname> -m "<tagdescription>"``` is used to add a tag with the given name and description.
+4. ```git push --tag``` is used to push the tags to remote repo.
+
+<img width="608" alt="screen shot 2018-08-30 at 12 32 23 am" src="https://user-images.githubusercontent.com/12914629/44809398-35520780-abec-11e8-9de0-828656671dd3.png">
 
 ## Cheat-Sheet
 
@@ -252,17 +291,26 @@ This will take a screenshot of all the staged/added changes.
 	
 	Removes the remote repository
 - ```git remote show origin```
+
+	Show all the remote branches and tells if they are tracked with local repo or not.
 - ```git remote prune origin```
+
+	Removes all the brances which have been deleted from the remote but still has a ref in the local repo. These branches are shown as stale branches when you do ```git remote show origin```.
 
 ### push
 
 - ```git push -u origin master```
 
 	Pushes the master branch to the remote repository which in this case is origin. Using -u we don't need to provide the repo namewhich is origin in this case and the branch name which is master in this case again and again. So next time we just do 
-
 - ```git push```
-- ```git push origin :<branch name> (To delete remote branch)```
+
+	Used to push tracked branches.
+- ```git push origin :<branch name>```
+
+	To delete remote branch with the given branch name.
 - ```git push origin <local branch name>:<remote branch name>```
+
+	This pushes the local branch with the given name to the remote branch with the given name.
 
 ### pull
 
@@ -271,26 +319,43 @@ This will take a screenshot of all the staged/added changes.
 	git fetch + git merge origin/master (If you are on the master branch)
 - ```git pull origin <branch name>```
 
+	This pulls the branch with the given name from the remote repo specified by origin
+
 ### clone
 
 - ```git clone <Remote repository http url> <folder name>```
 
+	This clones the remote repo specified in the url to local in the specified folder or directory.
+
 ### branch
 
 - ```git branch <branch name>```
+
+	Creates a new branch with the given branch name.
 - ```git branch -d <branch name>```
-	This deletes the branch with the given "branch name".
+
+	This deletes the branch with the given "branch name". Prevents you from deleting this branch if there are chages which haven't been commited. If you still want to delete it use ```git branch -D <branch name>``` instead.
 - ```git branch```
+
+	Lists all the tracked brances in the local repo.
 - ```git branch -r```
+
+	Lists all the branches in the remote repo.
 
 ### checkout
 
 - ```git checkout <branch name>```
+
+	Swithes the branch/timeline and sets the HEAD to the last commit of the new branch/timeline.
 - ```git checkout -b <branch name>```
+
+	Creates a new branch and checks it out for us. Same as ```git branch <branchname> + git checkout <branchname>```.
 
 ### merge
 
 - ```git merge <branch name>```
+
+	This merges the branch with the given branch name to the branch which is checked out OR to the branch where the HEAD is pointing.
 
 ### stash
 
@@ -307,4 +372,4 @@ This will take a screenshot of all the staged/added changes.
 
 	Reapplies the "stash@{1}" stash onto the current working directory
 
--Heroku only deploys the master branch
+
