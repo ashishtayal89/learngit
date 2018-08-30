@@ -48,7 +48,7 @@ Eg : SVN | Eg : Git
 	2. The you need to map this remote url to a local namespace using the command ```git remote add origin https://github.com/ashishtayal14/learngit.git```. Here **origin** is the namespace/alias which we are giving to the remote repo. We can give any name we want(generaly "origin"). Sometimes your could have mutiple remote repositories(different for dev and prod) for the same codebase. In that case you can add multiple remote to the local repository. This means that the remote and local repository has a **many to many relationship** ie a remote repo can be associated with multiple local repo and local repo can be associted with multiple remote repo.
 	3. To list all the remote repo saved in your local use the below command. These remotes are like **bookmarks**.
 		```git remote -v```
-	4. Now to push the local repo to remote use the command ```git push -u origin master```. Here **origin** refers to the remote repo where we want to push the code and **master** refers to the branch of the local repo we want to push. The **u** here is use to prevent us from specifying the repo and branch again and again. 
+	4. Now to push the local repo to remote use the command ```git push -u origin master```. Here **origin** refers to the remote repo where we want to push the code and **master** refers to the branch of the local repo we want to push. The __-u or --set-upstream__ here is used to prevent us from specifying the repo and branch again and again. 
 	5. If your remote repo is in github it will ask for the github username and password. Provide that.
 	6. If you don't want to specify the username and password everytime you push please refer the [this](http://help.github.com/articles/set-up-git) link which talks about password caching. 
 
@@ -89,7 +89,7 @@ Eg : SVN | Eg : Git
 
 - What is fast-forwanding?
 
-When we 1 or multiple commits on 1 branch and nothing on the other branch, it becomes very easy for the git to merge these branches and therefore it fastforwards the merging process.
+When we do 1 or multiple commits on 1 branch and nothing on the other branch, it becomes very easy for the git to merge these branches and therefore it fastforwards the merging process.
 
 - Everytime we do a commit our HEAD moves with it and always remains on the last commit until moved manualy.
 
@@ -155,6 +155,7 @@ When we 1 or multiple commits on 1 branch and nothing on the other branch, it be
 <img width="704" alt="screen shot 2018-08-30 at 12 08 34 am" src="https://user-images.githubusercontent.com/12914629/44808067-e060c200-abe8-11e8-9f32-e81642097202.png">
 
 - What are tags?
+
 Tags are reference to a specific commit. This is generaly used for release versioning. 
 1. ```git tag``` lists all the tags in the repo.
 2. ```git checkout <tagname>``` will checkout the code for the commit which was tagged.
