@@ -167,7 +167,7 @@ Tags are reference to a specific commit. This is generaly used for release versi
 ### Rebase
 This is a mechanism to prevent the merge commits from happening and just merge 2 branches without an additional merge commit.
 
-- Instead of doing ``` ~~git pull~~ ``` we do ```git fetch + git rebase```.
+- Instead of doing ~~git pull~~ we do ```git fetch + git rebase```.
 - git rebase does 3 things :
 	1. Moves all the commits in master which are not in origin/master to a temporary location.
 	2. Run all the origin/master commits one at a time OR moves commits from origin/master to master one at a time.
