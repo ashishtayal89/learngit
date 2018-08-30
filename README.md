@@ -445,6 +445,6 @@ This will take a screenshot of all the staged/added changes.
 
 	Continues with rebase and skips the patch/commit which needs to be applied.
 
-- ```git rebase --abort``
+- ```git rebase --abort```
 
 	To checkout the original branch and stop rebase run.
