@@ -164,6 +164,54 @@ Tags are reference to a specific commit. This is generaly used for release versi
 
 <img width="608" alt="screen shot 2018-08-30 at 12 32 23 am" src="https://user-images.githubusercontent.com/12914629/44809398-35520780-abec-11e8-9de0-828656671dd3.png">
 
+### Rebase
+This is a mechanism to prevent the merge commits from happening and just merge 2 branches without an additional merge commit.
+
+- Instead of doing ``` ~~git pull~~ ``` we do ```git fetch + git rebase```.
+- git rebase does 3 things :
+	1. Moves all the commits in master which are not in origin/master to a temporary location.
+	2. Run all the origin/master commits one at a time OR moves commits from origin/master to master one at a time.
+	3. Run all the commits in temporary area on the master one at a time OR move commits from temporary are to master one at a time.
+So there is no merge commit here. Just the commits of the individual branches.
+<img width="414" alt="screen shot 2018-08-30 at 11 06 32 pm" src="https://user-images.githubusercontent.com/12914629/44868816-94298680-aca9-11e8-822f-96662442133a.png">
+<img width="554" alt="screen shot 2018-08-30 at 11 06 53 pm" src="https://user-images.githubusercontent.com/12914629/44868817-955ab380-aca9-11e8-978c-360a2a72bf84.png">
+<img width="324" alt="screen shot 2018-08-30 at 11 07 13 pm" src="https://user-images.githubusercontent.com/12914629/44868822-968be080-aca9-11e8-8d89-59b0526c5ee7.png">
+<img width="699" alt="screen shot 2018-08-30 at 11 07 27 pm" src="https://user-images.githubusercontent.com/12914629/44868828-9986d100-aca9-11e8-88e0-38248c986fb9.png">
+
+- How to merge an admin branch into the master branch without a merge commit using rebase?
+	1. ```git checkout admin```
+	2. ```git rebase master```
+		This will push all the commits of master into admin branch before all the new commits in admin branch.
+	3. ```git checkout master```
+	4. ```git merge admin```. 
+		**Note** => This will be a fastforward merge instead of a recursive merge since we have already move all the commits in master to admin using ```git rebase master```.
+
+- How to merge a remote master branch into master branch without a merge commit using rebase?
+	1. ```git checkout master```
+	2. ```git fetch``` : Syncs the local repo with the remote repo.
+	3. ```git rebase``` : This will push all the commits in origin/master to master and add the additional commits in master on top of them.
+
+- What to do in-case of a conflict in rebase?
+
+Suppose you are trying to rebase orgin/master into master and face a conflict. Below are the steps you would follow to resolve it :
+1. ```git checkout master```
+2. ```git fetch```
+3. ```git rebase``` : As soon as you run this command, git will show you a confict in the 2 branches ie master and origin/master. At this point in time if you run a ```git status``` you will find that you are not on any branch but in the middle of a rebase.
+	Now you have the following 3 options to chose from :
+	1. ```git rebase --continue``` : Applies the commit and continues with the rebase. Before you run this command you must resolve all the conflicts and add them to staging using ```git add <filename>```.
+	2. ```git rebase --skip``` : Skips the commit and continues with the rebase.
+	3. ```git rebase --abort``` : Aborts/Discards all the commits and restores the branch to the state before rebase.
+
+
+<img width="897" alt="screen shot 2018-08-30 at 11 17 54 pm" src="https://user-images.githubusercontent.com/12914629/44869816-2763bb80-acac-11e8-929c-ba3838a65bbf.png">
+<img width="924" alt="screen shot 2018-08-30 at 11 18 27 pm" src="https://user-images.githubusercontent.com/12914629/44869817-27fc5200-acac-11e8-972f-1485c2507aa8.png">
+<img width="998" alt="screen shot 2018-08-30 at 11 20 05 pm" src="https://user-images.githubusercontent.com/12914629/44869819-292d7f00-acac-11e8-8f11-182af0fc3438.png">
+<img width="818" alt="screen shot 2018-08-30 at 11 20 38 pm" src="https://user-images.githubusercontent.com/12914629/44869824-2a5eac00-acac-11e8-9546-462a6874d860.png">
+<img width="809" alt="screen shot 2018-08-30 at 11 21 14 pm" src="https://user-images.githubusercontent.com/12914629/44869828-2cc10600-acac-11e8-9a4a-52daa7e2bf15.png">
+<img width="991" alt="screen shot 2018-08-30 at 11 24 44 pm" src="https://user-images.githubusercontent.com/12914629/44869831-2df23300-acac-11e8-8d79-65c64e6f00c2.png">
+<img width="879" alt="screen shot 2018-08-30 at 11 25 36 pm" src="https://user-images.githubusercontent.com/12914629/44869837-2e8ac980-acac-11e8-89ba-2088a9f15808.png">	
+
+
 ## Cheat-Sheet
 
 ### config
@@ -373,4 +421,30 @@ This will take a screenshot of all the staged/added changes.
 
 	Reapplies the "stash@{1}" stash onto the current working directory
 
+### fetch
 
+- ```git fetch``` 
+
+	Syncs the remote repo with the local repo
+
+### rebase
+
+- ```git rebase```
+
+	Pushes the commits of the remote branch into the local branch followed by the commits of the local branch.
+
+- ```git rebase <branchname>```
+
+	Pushes the commits of the branch with the given branchname to the branch which is checked out followed by the commits in the checked out branch.
+
+- ```git rebase --continue```
+
+	Continues with the rebase after the conflict is resolved.
+
+- ```git rebase --skip```
+
+	Continues with rebase and skips the patch/commit which needs to be applied.
+
+- ```git rebase --abort``
+
+	To checkout the original branch and stop rebase run.
