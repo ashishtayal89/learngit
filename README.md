@@ -262,6 +262,7 @@ Suppose you are trying to rebase orgin/master into master and face a conflict. B
 
 - What to do if you want to keep a perticular file or folder only to your local repo and don't want to move it to the 	remote repo?
 	You should move that file or folder to the __.git/info/exclude__ file so that the git excludes it from being pushed to the remote repo. Suppose us put "experiment/" in this file. Now if you run ```git status``` you wouldn't see this folder anymore.
+	
 	<img width="723" alt="screen shot 2018-08-31 at 8 14 52 pm" src="https://user-images.githubusercontent.com/12914629/44919203-8f70db00-ad5a-11e8-8991-760156551446.png">
 
 - What to do if you don't want anyone to push a file or folder to git?
