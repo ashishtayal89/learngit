@@ -234,7 +234,7 @@ Suppose you are trying to rebase orgin/master into master and face a conflict. B
 
 	4. ```git log --oneline --stack``` => It will show you how many insertions and deletions were made in each commit.
 		<img width="630" alt="screen shot 2018-08-31 at 7 24 52 pm" src="https://user-images.githubusercontent.com/12914629/44916512-90523e80-ad53-11e8-8a4b-d87ded7ae9eb.png">
-		
+
 	5. ```git log --oneline --graph``` => This will give us a visual representation of the commits.
 		<img width="683" alt="screen shot 2018-08-31 at 7 26 29 pm" src="https://user-images.githubusercontent.com/12914629/44916608-d1e2e980-ad53-11e8-90d8-a13b92d2c279.png">
 
@@ -257,6 +257,7 @@ Suppose you are trying to rebase orgin/master into master and face a conflict. B
 - How to find the changes in one perticular file?
 	You should use ```git blame``` for this.
 	1. ```git blame index.html --date sort``` => Shows all the changes made in the file with the author,date,SHA and line 	number which was changed.
+
 		<img width="560" alt="screen shot 2018-08-31 at 8 03 33 pm" src="https://user-images.githubusercontent.com/12914629/44918586-fa211700-ad58-11e8-8d0f-979bb739247a.png">
 
 - What to do if you want to keep a perticular file or folder only to your local repo and don't want to move it to the 	remote repo?
