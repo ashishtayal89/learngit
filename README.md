@@ -225,12 +225,16 @@ Suppose you are trying to rebase orgin/master into master and face a conflict. B
 - Ways to improve the output of the log ?
 	1. ```git log --pretty=oneline``` => SHA + Commit message
 	<img width="633" alt="screen shot 2018-08-31 at 7 18 33 pm" src="https://user-images.githubusercontent.com/12914629/44916170-ab707e80-ad52-11e8-8c9a-25397d6699a3.png">
+
 	2. ```git log --pretty=format:"%h %ah- %s [%an]"``` => To provide a custom format for the log
 		<img width="630" alt="screen shot 2018-08-31 at 7 20 51 pm" src="https://user-images.githubusercontent.com/12914629/44916291-fd190900-ad52-11e8-8b27-ced406f46885.png">
+
 	3. ```git log --oneline -p``` => This will show you what changed in each commit. Here __-p__ stands for patch.
 		<img width="550" alt="screen shot 2018-08-31 at 7 21 38 pm" src="https://user-images.githubusercontent.com/12914629/44916333-1e79f500-ad53-11e8-8b1d-75d9f797f6e4.png">
+
 	4. ```git log --oneline --stack``` => It will show you how many insertions and deletions were made in each commit.
 		<img width="630" alt="screen shot 2018-08-31 at 7 24 52 pm" src="https://user-images.githubusercontent.com/12914629/44916512-90523e80-ad53-11e8-8a4b-d87ded7ae9eb.png">
+		
 	5. ```git log --oneline --graph``` => This will give us a visual representation of the commits.
 		<img width="683" alt="screen shot 2018-08-31 at 7 26 29 pm" src="https://user-images.githubusercontent.com/12914629/44916608-d1e2e980-ad53-11e8-90d8-a13b92d2c279.png">
 
