@@ -212,20 +212,130 @@ Suppose you are trying to rebase orgin/master into master and face a conflict. B
 <img width="879" alt="screen shot 2018-08-30 at 11 25 36 pm" src="https://user-images.githubusercontent.com/12914629/44869837-2e8ac980-acac-11e8-89ba-2088a9f15808.png">	
 
 
+### History and Configuration
+
+- What are the general things in a commit details?
+	1. SHA Hash
+	2. Author
+	3. Date
+	4. Message
+
+<img width="529" alt="screen shot 2018-08-31 at 7 16 12 pm" src="https://user-images.githubusercontent.com/12914629/44916058-5896c700-ad52-11e8-8ee4-a76776ec6025.png">
+
+- Ways to improve the output of the log ?
+	1. ```git log --pretty=oneline``` => SHA + Commit message
+	<img width="633" alt="screen shot 2018-08-31 at 7 18 33 pm" src="https://user-images.githubusercontent.com/12914629/44916170-ab707e80-ad52-11e8-8c9a-25397d6699a3.png">
+	2. ```git log --pretty=format:"%h %ah- %s [%an]"``` => To provide a custom format for the log
+		<img width="630" alt="screen shot 2018-08-31 at 7 20 51 pm" src="https://user-images.githubusercontent.com/12914629/44916291-fd190900-ad52-11e8-8b27-ced406f46885.png">
+	3. ```git log --oneline -p``` => This will show you what changed in each commit. Here __-p__ stands for patch.
+		<img width="550" alt="screen shot 2018-08-31 at 7 21 38 pm" src="https://user-images.githubusercontent.com/12914629/44916333-1e79f500-ad53-11e8-8b1d-75d9f797f6e4.png">
+	4. ```git log --oneline --stack``` => It will show you how many insertions and deletions were made in each commit.
+		<img width="630" alt="screen shot 2018-08-31 at 7 24 52 pm" src="https://user-images.githubusercontent.com/12914629/44916512-90523e80-ad53-11e8-8a4b-d87ded7ae9eb.png">
+	5. ```git log --oneline --graph``` => This will give us a visual representation of the commits.
+		<img width="683" alt="screen shot 2018-08-31 at 7 26 29 pm" src="https://user-images.githubusercontent.com/12914629/44916608-d1e2e980-ad53-11e8-90d8-a13b92d2c279.png">
+
+- How to get the logs for certain range or dates ?
+	1. ```git log --until=1.minute.ago``` => Shows commits done until the time specified.We can have multiple values in place of minute like **hour,day,month**.
+	2. ```git log --since=1.day.ago``` => Show commits since the time specified. We could also specify both --since and --until in the same statement like ```git log --until=1.minute.ago --since=1.day.ago```.
+		<img width="782" alt="screen shot 2018-08-31 at 7 33 54 pm" src="https://user-images.githubusercontent.com/12914629/44917016-d1971e00-ad54-11e8-8009-100f1e3e0b38.png">
+
+- How to find the diff with commits before most resent commit ?
+	1. ```git diff HEAD^``` => Show diff parent of latest commit.
+		Similarly ```git diff HEAD^^``` will show diff with parent of parent of latest commit.
+	2. ```git diff HEAD~5``` => Shows diff with 5 commits ago.
+	3. ```git diff HEAD^...HEAD``` => Shows diff of second most recent to the most recent commit.
+		<img width="775" alt="screen shot 2018-08-31 at 7 45 58 pm" src="https://user-images.githubusercontent.com/12914629/44917615-80882980-ad56-11e8-8a67-a3ac08249f0b.png">
+	4. ```git diff <SHA1> <SHA2>``` => Here **SHA1** and **SHA2** are the commit ID/SHA specifically. So this will show 	the diff between the commits with the given SHA's. You could also use abbreviated SHA provided by the git in 		place of actual SHA's.
+	5. ```git diff master admin``` => Shows diff between branch with name "master" and branch with name "admin".
+	6. ```git diff --since=1.day.ago``` => This shows time based diffs.
+		<img width="794" alt="screen shot 2018-08-31 at 7 55 10 pm" src="https://user-images.githubusercontent.com/12914629/44918107-c98cad80-ad57-11e8-8ae3-1f469fb2ba9c.png">
+
+- How to find the changes in one perticular file?
+	You should use ```git blame``` for this.
+	1. ```git blame index.html --date sort``` => Shows all the changes made in the file with the author,date,SHA and line 	number which was changed.
+		<img width="560" alt="screen shot 2018-08-31 at 8 03 33 pm" src="https://user-images.githubusercontent.com/12914629/44918586-fa211700-ad58-11e8-8d0f-979bb739247a.png">
+
+- What to do if you want to keep a perticular file or folder only to your local repo and don't want to move it to the 	remote repo?
+	You should move that file or folder to the __.git/info/exclude__ file so that the git excludes it from being pushed to the remote repo. Suppose us put "experiment/" in this file. Now if you run ```git status``` you wouldn't see this folder anymore.
+	<img width="723" alt="screen shot 2018-08-31 at 8 14 52 pm" src="https://user-images.githubusercontent.com/12914629/44919203-8f70db00-ad5a-11e8-8991-760156551446.png">
+
+- What to do if you don't want anyone to push a file or folder to git?
+	Just add that to the __.gitignore__ file. All the files or folder present in the .gitignore file are not tracked by git.
+
+- How to remove a file/folder from the repository and the file system?
+	```git rm <filename OR foldername>``` => Removes the file/folder from the file system and adds that to the stage. Then just do a ```git commit -a -m "msg"``` to push the change to the repo and files should be removed from the repo. Alternatively you could manualy remove the file/folder, then do a ```git add --all``` and then ```git commit -a -m "msg"```.
+	<img width="495" alt="screen shot 2018-08-31 at 8 22 54 pm" src="https://user-images.githubusercontent.com/12914629/44919903-330ebb00-ad5c-11e8-8ec3-d5d81b41126d.png">
+
+- How to remove a file/folder from the repository but keep in the file system and prevent git from tracking it going forward?
+	```git rm --cached <file OR folder name>``` => Stops tracking the file and adds it to the stage. Then just do a ```git commit -a -m "msg"``` to push the change to the repo and files should be removed from the repo.
+	<img width="792" alt="screen shot 2018-08-31 at 8 51 36 pm" src="https://user-images.githubusercontent.com/12914629/44921256-af56cd80-ad5f-11e8-9fe6-4b7ca999042e.png">
+
+
+- How to define an alias? Like alias for different log formats?
+	1. ```git config --global alias.mylog "log --pretty=format:'%h %s [%an]' --graph"``` => 
+		Then just do ```git mylog```.
+	2. ```git config --global alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit --all"```
+
+<img width="718" alt="screen shot 2018-08-31 at 9 09 59 pm" src="https://user-images.githubusercontent.com/12914629/44922402-f98d7e00-ad62-11e8-9932-4efc5390e274.png">
+<img width="773" alt="screen shot 2018-08-31 at 9 14 45 pm" src="https://user-images.githubusercontent.com/12914629/44922403-fa261480-ad62-11e8-8761-e94b3a19c687.png">
+
 ## Cheat-Sheet
+
+### rm
+
+- ```git rm <filename OR foldername>```
+
+ 	Removes the file/folder from the file system and adds that to the stage. Then just do a ```git commit -a -m "msg"``` to push the change to the repo and files should be removed from the repo. Alternatively you could manualy remove the file/folder, then do a ```git add --all``` and then ```git commit -a -m "msg"```.
+
+- ```git rm --cached <file OR folder name>``` 
+
+	Stops tracking the file and adds it to the stage. Then just do a ```git commit -a -m "msg"``` to push the change to the repo and files should be removed from the repo.
+
+### blame
+
+```git blame index.html --date sort``` 
+	Shows all the changes made in the file with the author,date,SHA and line number which was changed.
 
 ### config
 
 - ```git config --global user.email "Ashish@gmail.com"```
 
-	To configure the email  globally
+	To configure the email globally
 
 - ```git config --global user.name "Ashish"```
 
 	To configure the username globally
+
+- ```git config user.email "Ashish@gmail.com"```
+
+	To configure email for current repo
+
+- ```git config user.email```
+
+	Tells the email being used for this repo
+
 - ```git config --global color.ui true```
 
 	To active the cli color scheme
+
+- ```git config --global core.editor <Editor>``` 
+
+	To configure a core editor like emacs
+
+- ```git config --global merge.tool <merge tool>```
+
+	To confiture a specific merge tool like opendiff
+
+- ```git config --list```
+
+	Shows a list of all the configurations done by you. First shows the global configurations followed by the local configurations.
+
+- ```git config --global alias.mylog "log --pretty=format:'%h %s [%an]' --graph"```
+
+		Then just do ```git mylog```
+
+- ```git config --global alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit --all"```
+
 ### init
 
 - ```git init```
@@ -288,18 +398,42 @@ This will take a screenshot of all the staged/added changes.
 
 ### diff
 
-- ```git diff```
+- ```git diff``` OR ```git diff HEAD```
 	
 	Show all unstaged differences.
 - ```git diff --staged```
 	
-	Show all staged differneces.
+	Show all staged differences.
 - ```git diff <filepath>```
 	
 	This will show the difference in the file at the given filepath in the current working directory from the last commit.
 - ```git diff <filepath> --staged```
 	
 	This will show the difference in the file at the given filepath in the staging area from the last commit.
+
+- ```git diff HEAD^``` 
+
+	Show diff parent of latest commit.Similarly ```git diff HEAD^^``` will show diff with parent of parent of latest commit.
+
+-  ```git diff HEAD~5```
+	
+	Shows diff with 5 commits ago.
+
+```git diff HEAD^...HEAD```
+
+	Shows diff of second most recent to the most recent commit.
+
+- ```git diff <SHA1> <SHA2>``` 
+
+	Here **SHA1** and **SHA2** are the commit ID/SHA specifically. So this will show 	the diff between the commits with the given SHA's. You could also use abbreviated SHA provided by the git in place of actual SHA's.
+
+- ```git diff master admin``` 
+	
+	Shows diff between branch with name "master" and branch with name "admin".
+
+- ```git diff --since=1.day.ago``` 
+
+	This shows time based diffs.
 
 ### reset
 
@@ -328,6 +462,34 @@ This will take a screenshot of all the staged/added changes.
 	
 	This will list all the commits on the branch along with the author name and date.
 
+- ```git log --pretty=oneline``` 
+
+	SHA + Commit message
+	
+- ```git log --pretty=format:"%h %ah- %s [%an]"``` 
+
+	To provide a custom format for the log
+		
+- ```git log --oneline -p``` 
+	
+	This will show you what changed in each commit. Here __-p__ stands for patch.
+		
+- ```git log --oneline --stack``` 
+	
+	It will show you how many insertions and deletions were made in each commit.
+		
+- ```git log --oneline --graph``` 
+
+	This will give us a visual representation of the commits.
+
+- ```git log --until=1.minute.ago``` 
+
+	Shows commits done until the time specified.We can have multiple values in place of minute like **hour,day,month**.
+
+- ```git log --since=1.day.ago``` 
+
+	Show commits since the time specified. We could also specify both --since and --until in the same statement like ```git log --until=1.minute.ago --since=1.day.ago```.
+		
 ### remote
 
 - ```git remote add origin <Remote repository http url>```
