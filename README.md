@@ -255,29 +255,40 @@ Suppose you are trying to rebase orgin/master into master and face a conflict. B
 		<img width="794" alt="screen shot 2018-08-31 at 7 55 10 pm" src="https://user-images.githubusercontent.com/12914629/44918107-c98cad80-ad57-11e8-8ae3-1f469fb2ba9c.png">
 
 - How to find the changes in one perticular file?
+
+
 	You should use ```git blame``` for this.
 	1. ```git blame index.html --date sort``` => Shows all the changes made in the file with the author,date,SHA and line 	number which was changed.
 
 		<img width="560" alt="screen shot 2018-08-31 at 8 03 33 pm" src="https://user-images.githubusercontent.com/12914629/44918586-fa211700-ad58-11e8-8d0f-979bb739247a.png">
 
 - What to do if you want to keep a perticular file or folder only to your local repo and don't want to move it to the 	remote repo?
+
+
 	You should move that file or folder to the __.git/info/exclude__ file so that the git excludes it from being pushed to the remote repo. Suppose us put "experiment/" in this file. Now if you run ```git status``` you wouldn't see this folder anymore.
 	
 	<img width="723" alt="screen shot 2018-08-31 at 8 14 52 pm" src="https://user-images.githubusercontent.com/12914629/44919203-8f70db00-ad5a-11e8-8991-760156551446.png">
 
 - What to do if you don't want anyone to push a file or folder to git?
+
+
 	Just add that to the __.gitignore__ file. All the files or folder present in the .gitignore file are not tracked by git.
 
 - How to remove a file/folder from the repository and the file system?
+
+
 	```git rm <filename OR foldername>``` => Removes the file/folder from the file system and adds that to the stage. Then just do a ```git commit -a -m "msg"``` to push the change to the repo and files should be removed from the repo. Alternatively you could manualy remove the file/folder, then do a ```git add --all``` and then ```git commit -a -m "msg"```.
 	<img width="495" alt="screen shot 2018-08-31 at 8 22 54 pm" src="https://user-images.githubusercontent.com/12914629/44919903-330ebb00-ad5c-11e8-8ec3-d5d81b41126d.png">
 
 - How to remove a file/folder from the repository but keep in the file system and prevent git from tracking it going forward?
+
+
 	```git rm --cached <file OR folder name>``` => Stops tracking the file and adds it to the stage. Then just do a ```git commit -a -m "msg"``` to push the change to the repo and files should be removed from the repo.
 	<img width="792" alt="screen shot 2018-08-31 at 8 51 36 pm" src="https://user-images.githubusercontent.com/12914629/44921256-af56cd80-ad5f-11e8-9fe6-4b7ca999042e.png">
 
 
 - How to define an alias? Like alias for different log formats?
+
 	1. ```git config --global alias.mylog "log --pretty=format:'%h %s [%an]' --graph"``` => 
 		Then just do ```git mylog```.
 	2. ```git config --global alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit --all"```
@@ -300,6 +311,7 @@ Suppose you are trying to rebase orgin/master into master and face a conflict. B
 ### blame
 
 ```git blame index.html --date sort``` 
+
 	Shows all the changes made in the file with the author,date,SHA and line number which was changed.
 
 ### config
