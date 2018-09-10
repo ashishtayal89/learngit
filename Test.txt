@@ -1,4 +1,4 @@
 Demos
 Cats
 Dogs
-This is a dogs
+These are dogs
