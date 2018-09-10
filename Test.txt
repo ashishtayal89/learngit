@@ -1,4 +1,4 @@
 Demos
 Cats
-Dog
+Dogs
 This is a dogs
