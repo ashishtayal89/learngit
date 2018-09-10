@@ -296,6 +296,10 @@ Suppose you are trying to rebase orgin/master into master and face a conflict. B
 <img width="718" alt="screen shot 2018-08-31 at 9 09 59 pm" src="https://user-images.githubusercontent.com/12914629/44922402-f98d7e00-ad62-11e8-9932-4efc5390e274.png">
 <img width="773" alt="screen shot 2018-08-31 at 9 14 45 pm" src="https://user-images.githubusercontent.com/12914629/44922403-fa261480-ad62-11e8-8761-e94b3a19c687.png">
 
+### Interactive Rebase
+
+
+
 ## Cheat-Sheet
 
 ### rm
